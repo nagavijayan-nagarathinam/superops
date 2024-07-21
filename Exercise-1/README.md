@@ -2,12 +2,43 @@
 
 This codebase uses Terraform to manage AWS infrastructure for a web application. The infrastructure includes a VPC with public and private subnets, EC2 instances in an Auto Scaling Group running NGINX, and an Application Load Balancer (ALB) to distribute traffic.
 
+# Modifying Variables
+You can modify the variables in the variables.tf file within each environment directory to suit your requirements. Below is an example of variables that can be modified, along with their default values:
+```
+region:                 The AWS region. Default is ap-south-1.
+
+vpc_cidr:               The CIDR block for the VPC. Default is 10.0.0.0/16.
+
+num_public_subnets:     The number of public subnets to create. Default is 2.
+
+num_private_subnets:    The number of private subnets to create. Default is 2.
+
+num_ips_per_subnet:     The number of IPs per subnet. Default is 80.
+
+instance_type:          The type of instance to use. Default is t2.micro.
+
+key_name:               The name of the key pair to use for SSH access. Default is dev.
+
+private_asg_min_size:   The minimum size of the private ASG. Default is 1.
+
+private_asg_max_size:   The maximum size of the private ASG. Default is 3.
+
+default_tags:           A map of default tags to be applied to all resources. Default is { Project = "SuperOps", Owner = "DevOps" }.
+
+resource_prefix:        A prefix to add to the name of all resources. Default is superops.
+
+environment:            The environment name. Default is dev.
+```
 
 ## Execution Steps
 
 
 1. **Execute Terraform**: Run the following command to initialize the Terraform configuration.
-    ```sh
+    ```
+    export AWS_ACCESS_KEY_ID=your_access_key_id
+
+    export AWS_SECRET_ACCESS_KEY=your_secret_access_key
+
     cd superops/Exercise-1/environment/production
 
     terraform init

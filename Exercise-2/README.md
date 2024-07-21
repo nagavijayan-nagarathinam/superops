@@ -9,10 +9,16 @@ This codebase uses AWS Lambda, CloudTrail, and CloudWatch Events to automaticall
 **Deploy with Terraform**:
     - Use the Terraform configuration to deploy the Lambda function and CloudWatch Event Rule:
     
-    sh
+    export AWS_ACCESS_KEY_ID=your_access_key_id
+
+    export AWS_SECRET_ACCESS_KEY=your_secret_access_key
+
     cd superops/Exercise-2/terraform
+
     terraform init
+
     terraform plan
+
     terraform apply
 
 
